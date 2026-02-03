@@ -1,0 +1,15 @@
+<svg height="128" width="128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="128" height="128" fill="#1a1a2e"/>
+  
+  <!-- Herb leaf icon -->
+  <path d="M 64 30 Q 50 40 50 60 Q 50 75 64 85 Q 78 75 78 60 Q 78 40 64 30" fill="#4a9d5f" stroke="#2d5f3d" stroke-width="2"/>
+  <path d="M 64 30 Q 64 45 64 85" stroke="#2d5f3d" stroke-width="2" fill="none"/>
+  
+  <!-- Cross/Medical symbol -->
+  <rect x="60" y="90" width="8" height="20" fill="#c4483f"/>
+  <rect x="52" y="98" width="24" height="8" fill="#c4483f"/>
+  
+  <!-- Border -->
+  <rect width="128" height="128" fill="none" stroke="#533483" stroke-width="3"/>
+</svg>
