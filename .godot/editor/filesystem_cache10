@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1770111080
+::res://::1770112757
 CUSTOMIZATION_GUIDE.md::TextFile::-1::1770111023::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D::954678002585532026::1770111023::1770111081::1::::<><><>0<>0<>a11761f75a51f48c452124bc20b136f8<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 input_map.txt::TextFile::-1::1770111023::0::1::::<><><>0<>0<><>::
@@ -13,7 +13,7 @@ SCENE_SETUP_GUIDE.md::TextFile::-1::1770111023::0::1::::<><><>0<>0<><>::
 ::res://assets/sprites/::1770111023
 ::res://assets/sprites/{player,enemies,items,tiles}/::1770085250
 ::res://scenes/::1770085248
-::res://scripts/::1770111023
+::res://scripts/::1770111081
 game_manager.gd::GDScript::5109701335938600022::1770111023::0::1::::<>Node<><>0<>0<><>::
 game_over.gd::GDScript::5947125218079465015::1770111023::0::1::::<>Control<><>0<>0<><>::
 game_ui.gd::GDScript::8869422424341345649::1770111023::0::1::::<>CanvasLayer<><>0<>0<><>::

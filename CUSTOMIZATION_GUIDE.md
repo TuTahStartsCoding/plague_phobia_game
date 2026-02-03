@@ -50,8 +50,8 @@ var max_hallucination: float = 100.0     # ระดับภาพหลอน�
 # เพิ่มใน game_manager.gd
 var max_herb_capacity: int = 20
 var herb_combinations: Dictionary = {
-    "cure_plague": ["mint", "ginger", "turmeric"],
-    "cure_tuberculosis": ["garlic", "turmeric", "mint"]
+	"cure_plague": ["mint", "ginger", "turmeric"],
+	"cure_tuberculosis": ["garlic", "turmeric", "mint"]
 }
 ```
 
@@ -64,50 +64,50 @@ var time_of_day: float = 0.0  # 0-24
 var day_length: float = 300.0  # 5 นาที = 1 วัน
 
 func _process(delta):
-    time_of_day += delta / day_length * 24
-    if time_of_day >= 24:
-        time_of_day = 0
-    update_lighting()
+	time_of_day += delta / day_length * 24
+	if time_of_day >= 24:
+		time_of_day = 0
+	update_lighting()
 
 func update_lighting():
-    # ปรับแสงตามเวลา
-    pass
+	# ปรับแสงตามเวลา
+	pass
 ```
 
 ### 3. ระบบ Upgrade/Skills
 ```gdscript
 # เพิ่มใน game_manager.gd
 var player_skills: Dictionary = {
-    "faster_collection": false,  # เก็บสมุนไพรเร็วขึ้น
-    "better_medicine": false,    # ใช้สมุนไพรน้อยลง
-    "mental_resistance": false,  # ต้านทานภาพหลอนดีขึ้น
-    "spirit_vision": false       # มองเห็นวิญญาณได้ไกลขึ้น
+	"faster_collection": false,  # เก็บสมุนไพรเร็วขึ้น
+	"better_medicine": false,    # ใช้สมุนไพรน้อยลง
+	"mental_resistance": false,  # ต้านทานภาพหลอนดีขึ้น
+	"spirit_vision": false       # มองเห็นวิญญาณได้ไกลขึ้น
 }
 ```
 
 ### 4. ระบบ Crafting
 ```gdscript
 var crafting_recipes: Dictionary = {
-    "basic_medicine": {
-        "herbs": {"mint": 2, "ginger": 1},
-        "effectiveness": 0.7
-    },
-    "advanced_medicine": {
-        "herbs": {"mint": 2, "ginger": 2, "turmeric": 1},
-        "effectiveness": 1.0
-    }
+	"basic_medicine": {
+		"herbs": {"mint": 2, "ginger": 1},
+		"effectiveness": 0.7
+	},
+	"advanced_medicine": {
+		"herbs": {"mint": 2, "ginger": 2, "turmeric": 1},
+		"effectiveness": 1.0
+	}
 }
 ```
 
 ### 5. ระบบ Quest/Mission
 ```gdscript
 var active_quests: Array = [
-    {
-        "name": "หายาด่วน",
-        "type": "collect_herbs",
-        "target": 10,
-        "reward": "faster_collection"
-    }
+	{
+		"name": "หายาด่วน",
+		"type": "collect_herbs",
+		"target": 10,
+		"reward": "faster_collection"
+	}
 ]
 ```
 
@@ -119,17 +119,17 @@ var active_quests: Array = [
 ```gdscript
 # เพิ่มใน Camera2D
 func shake(intensity: float, duration: float):
-    var original_pos = offset
-    var shake_tween = create_tween()
-    
-    for i in range(int(duration * 60)):  # 60 FPS
-        var shake_offset = Vector2(
-            randf_range(-intensity, intensity),
-            randf_range(-intensity, intensity)
-        )
-        shake_tween.tween_property(self, "offset", shake_offset, 0.016)
-    
-    shake_tween.tween_property(self, "offset", original_pos, 0.1)
+	var original_pos = offset
+	var shake_tween = create_tween()
+	
+	for i in range(int(duration * 60)):  # 60 FPS
+		var shake_offset = Vector2(
+			randf_range(-intensity, intensity),
+			randf_range(-intensity, intensity)
+		)
+		shake_tween.tween_property(self, "offset", shake_offset, 0.016)
+	
+	shake_tween.tween_property(self, "offset", original_pos, 0.1)
 ```
 
 ### 2. Vignette Effect
@@ -140,10 +140,10 @@ shader_type canvas_item;
 uniform float vignette_intensity : hint_range(0.0, 1.0) = 0.5;
 
 void fragment() {
-    vec2 uv = UV - 0.5;
-    float dist = length(uv);
-    float vignette = 1.0 - smoothstep(0.3, 0.8, dist);
-    COLOR.rgb *= mix(1.0, vignette, vignette_intensity);
+	vec2 uv = UV - 0.5;
+	float dist = length(uv);
+	float vignette = 1.0 - smoothstep(0.3, 0.8, dist);
+	COLOR.rgb *= mix(1.0, vignette, vignette_intensity);
 }
 ```
 
@@ -190,37 +190,37 @@ sound_player.play()
 ```gdscript
 # เพิ่มใน game_manager.gd
 var achievements: Dictionary = {
-    "first_save": {
-        "name": "ผู้ช่วยชีวิตมือใหม่",
-        "description": "รักษาผู้ป่วยครั้งแรก",
-        "unlocked": false
-    },
-    "perfect_day": {
-        "name": "วันที่สมบูรณ์แบบ",
-        "description": "ผ่าน 1 วันโดยไม่มีผู้ป่วยเสียชีวิต",
-        "unlocked": false
-    },
-    "herb_master": {
-        "name": "ปรมาจารย์สมุนไพร",
-        "description": "เก็บสมุนไพรครบ 100 ชิ้น",
-        "unlocked": false
-    },
-    "spirit_survivor": {
-        "name": "ผู้รอดชีวิต",
-        "description": "หลบวิญญาณสำเร็จ 10 ครั้ง",
-        "unlocked": false
-    },
-    "cure_discoverer": {
-        "name": "ผู้ค้นพบยา",
-        "description": "จบเกมโดยค้นพบยารักษาโรค",
-        "unlocked": false
-    }
+	"first_save": {
+		"name": "ผู้ช่วยชีวิตมือใหม่",
+		"description": "รักษาผู้ป่วยครั้งแรก",
+		"unlocked": false
+	},
+	"perfect_day": {
+		"name": "วันที่สมบูรณ์แบบ",
+		"description": "ผ่าน 1 วันโดยไม่มีผู้ป่วยเสียชีวิต",
+		"unlocked": false
+	},
+	"herb_master": {
+		"name": "ปรมาจารย์สมุนไพร",
+		"description": "เก็บสมุนไพรครบ 100 ชิ้น",
+		"unlocked": false
+	},
+	"spirit_survivor": {
+		"name": "ผู้รอดชีวิต",
+		"description": "หลบวิญญาณสำเร็จ 10 ครั้ง",
+		"unlocked": false
+	},
+	"cure_discoverer": {
+		"name": "ผู้ค้นพบยา",
+		"description": "จบเกมโดยค้นพบยารักษาโรค",
+		"unlocked": false
+	}
 }
 
 func unlock_achievement(achievement_id: String):
-    if achievements.has(achievement_id) and not achievements[achievement_id]["unlocked"]:
-        achievements[achievement_id]["unlocked"] = true
-        show_achievement_popup(achievement_id)
+	if achievements.has(achievement_id) and not achievements[achievement_id]["unlocked"]:
+		achievements[achievement_id]["unlocked"] = true
+		show_achievement_popup(achievement_id)
 ```
 
 ---
@@ -230,32 +230,32 @@ func unlock_achievement(achievement_id: String):
 ```gdscript
 # เพิ่มใน game_manager.gd
 func save_game():
-    var save_data = {
-        "current_day": current_day,
-        "patients_saved": patients_saved,
-        "patients_dead": patients_dead,
-        "mental_health": mental_health,
-        "herbs_collected": herbs_collected,
-        "achievements": achievements
-    }
-    
-    var file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
-    file.store_var(save_data)
-    file.close()
+	var save_data = {
+		"current_day": current_day,
+		"patients_saved": patients_saved,
+		"patients_dead": patients_dead,
+		"mental_health": mental_health,
+		"herbs_collected": herbs_collected,
+		"achievements": achievements
+	}
+	
+	var file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	file.store_var(save_data)
+	file.close()
 
 func load_game():
-    if not FileAccess.file_exists("user://savegame.save"):
-        return false
-    
-    var file = FileAccess.open("user://savegame.save", FileAccess.READ)
-    var save_data = file.get_var()
-    file.close()
-    
-    current_day = save_data["current_day"]
-    patients_saved = save_data["patients_saved"]
-    # ... load other data
-    
-    return true
+	if not FileAccess.file_exists("user://savegame.save"):
+		return false
+	
+	var file = FileAccess.open("user://savegame.save", FileAccess.READ)
+	var save_data = file.get_var()
+	file.close()
+	
+	current_day = save_data["current_day"]
+	patients_saved = save_data["patients_saved"]
+	# ... load other data
+	
+	return true
 ```
 
 ---
@@ -285,30 +285,30 @@ $Button.text = tr("START_GAME")
 
 ```gdscript
 var random_events: Array = [
-    {
-        "name": "heavy_rain",
-        "description": "ฝนตกหนัก เคลื่อนที่ช้าลง",
-        "effect": func(): player.speed *= 0.7,
-        "duration": 60.0
-    },
-    {
-        "name": "spirit_surge",
-        "description": "วิญญาณเพิ่มมากขึ้น",
-        "effect": func(): spawn_extra_spirits(3),
-        "duration": 30.0
-    },
-    {
-        "name": "herb_abundance",
-        "description": "สมุนไพรงอกมากขึ้น",
-        "effect": func(): respawn_all_herbs(),
-        "duration": 0.0
-    }
+	{
+		"name": "heavy_rain",
+		"description": "ฝนตกหนัก เคลื่อนที่ช้าลง",
+		"effect": func(): player.speed *= 0.7,
+		"duration": 60.0
+	},
+	{
+		"name": "spirit_surge",
+		"description": "วิญญาณเพิ่มมากขึ้น",
+		"effect": func(): spawn_extra_spirits(3),
+		"duration": 30.0
+	},
+	{
+		"name": "herb_abundance",
+		"description": "สมุนไพรงอกมากขึ้น",
+		"effect": func(): respawn_all_herbs(),
+		"duration": 0.0
+	}
 ]
 
 func trigger_random_event():
-    if randf() < 0.1:  # 10% chance
-        var event = random_events[randi() % random_events.size()]
-        apply_event_effect(event)
+	if randf() < 0.1:  # 10% chance
+		var event = random_events[randi() % random_events.size()]
+		apply_event_effect(event)
 ```
 
 ---
@@ -317,37 +317,37 @@ func trigger_random_event():
 
 ```gdscript
 enum Difficulty {
-    EASY,
-    NORMAL,
-    HARD,
-    NIGHTMARE
+	EASY,
+	NORMAL,
+	HARD,
+	NIGHTMARE
 }
 
 var difficulty_settings = {
-    Difficulty.EASY: {
-        "patient_time_limit": 60.0,
-        "spirit_speed_multiplier": 0.7,
-        "herbs_required": 2,
-        "disease_chance": 0.3
-    },
-    Difficulty.NORMAL: {
-        "patient_time_limit": 30.0,
-        "spirit_speed_multiplier": 1.0,
-        "herbs_required": 3,
-        "disease_chance": 0.5
-    },
-    Difficulty.HARD: {
-        "patient_time_limit": 20.0,
-        "spirit_speed_multiplier": 1.3,
-        "herbs_required": 4,
-        "disease_chance": 0.7
-    },
-    Difficulty.NIGHTMARE: {
-        "patient_time_limit": 15.0,
-        "spirit_speed_multiplier": 1.5,
-        "herbs_required": 5,
-        "disease_chance": 0.9
-    }
+	Difficulty.EASY: {
+		"patient_time_limit": 60.0,
+		"spirit_speed_multiplier": 0.7,
+		"herbs_required": 2,
+		"disease_chance": 0.3
+	},
+	Difficulty.NORMAL: {
+		"patient_time_limit": 30.0,
+		"spirit_speed_multiplier": 1.0,
+		"herbs_required": 3,
+		"disease_chance": 0.5
+	},
+	Difficulty.HARD: {
+		"patient_time_limit": 20.0,
+		"spirit_speed_multiplier": 1.3,
+		"herbs_required": 4,
+		"disease_chance": 0.7
+	},
+	Difficulty.NIGHTMARE: {
+		"patient_time_limit": 15.0,
+		"spirit_speed_multiplier": 1.5,
+		"herbs_required": 5,
+		"disease_chance": 0.9
+	}
 }
 ```
 
@@ -363,23 +363,23 @@ var touch_index = -1
 var center_position = Vector2.ZERO
 
 func _ready():
-    center_position = position + size / 2
+	center_position = position + size / 2
 
 func _input(event):
-    if event is InputEventScreenTouch:
-        if event.pressed:
-            touch_index = event.index
-            update_joystick(event.position)
-        else:
-            touch_index = -1
-            reset_joystick()
-    
-    elif event is InputEventScreenDrag and event.index == touch_index:
-        update_joystick(event.position)
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			touch_index = event.index
+			update_joystick(event.position)
+		else:
+			touch_index = -1
+			reset_joystick()
+	
+	elif event is InputEventScreenDrag and event.index == touch_index:
+		update_joystick(event.position)
 
 func update_joystick(touch_pos: Vector2):
-    var direction = (touch_pos - center_position).normalized()
-    # Send direction to player
+	var direction = (touch_pos - center_position).normalized()
+	# Send direction to player
 ```
 
 ---
@@ -389,24 +389,24 @@ func update_joystick(touch_pos: Vector2):
 ```gdscript
 # เพิ่มใน player.gd
 func _unhandled_input(event):
-    if not OS.is_debug_build():
-        return
-    
-    # Debug shortcuts
-    if event.is_action_pressed("ui_page_up"):
-        game_manager.collect_herb("mint")
-        game_manager.collect_herb("ginger")
-        game_manager.collect_herb("turmeric")
-    
-    if event.is_action_pressed("ui_page_down"):
-        game_manager.mental_health = 100.0
-        game_manager.hallucination_level = 0.0
-    
-    if event.is_action_pressed("ui_home"):
-        game_manager.next_day()
-    
-    if event.is_action_pressed("ui_end"):
-        game_manager.patients_saved = 100
+	if not OS.is_debug_build():
+		return
+	
+	# Debug shortcuts
+	if event.is_action_pressed("ui_page_up"):
+		game_manager.collect_herb("mint")
+		game_manager.collect_herb("ginger")
+		game_manager.collect_herb("turmeric")
+	
+	if event.is_action_pressed("ui_page_down"):
+		game_manager.mental_health = 100.0
+		game_manager.hallucination_level = 0.0
+	
+	if event.is_action_pressed("ui_home"):
+		game_manager.next_day()
+	
+	if event.is_action_pressed("ui_end"):
+		game_manager.patients_saved = 100
 ```
 
 ---
@@ -416,16 +416,16 @@ func _unhandled_input(event):
 ```gdscript
 # เพิ่ม analytics tracking
 var game_stats = {
-    "total_play_time": 0.0,
-    "herbs_collected_total": 0,
-    "patients_saved_total": 0,
-    "deaths": 0,
-    "completions": 0
+	"total_play_time": 0.0,
+	"herbs_collected_total": 0,
+	"patients_saved_total": 0,
+	"deaths": 0,
+	"completions": 0
 }
 
 func track_event(event_name: String, data: Dictionary = {}):
-    # Save to file or send to server
-    print("Event: ", event_name, " Data: ", data)
+	# Save to file or send to server
+	print("Event: ", event_name, " Data: ", data)
 ```
 
 ---
@@ -439,15 +439,15 @@ extends Node
 signal cutscene_finished
 
 func play_cutscene(cutscene_id: String):
-    match cutscene_id:
-        "game_intro":
-            await show_text("ณ ยุคแห่งโรคระบาด...")
-            await fade_to_black()
-            emit_signal("cutscene_finished")
-        "first_death":
-            await show_text("ผู้ป่วยเสียชีวิต...")
-            await shake_camera()
-            emit_signal("cutscene_finished")
+	match cutscene_id:
+		"game_intro":
+			await show_text("ณ ยุคแห่งโรคระบาด...")
+			await fade_to_black()
+			emit_signal("cutscene_finished")
+		"first_death":
+			await show_text("ผู้ป่วยเสียชีวิต...")
+			await shake_camera()
+			emit_signal("cutscene_finished")
 ```
 
 ---

@@ -6,9 +6,9 @@
 ```
 Control (main_menu.gd)
 └── VBoxContainer
-    ├── TitleLabel
-    ├── StartButton
-    └── QuitButton
+	├── TitleLabel
+	├── StartButton
+	└── QuitButton
 ```
 
 ### การตั้งค่า:
@@ -183,10 +183,10 @@ Node2D (main_game)
 ```
 Control (game_over.gd)
 └── VBoxContainer
-    ├── GameOverLabel
-    ├── StatsLabel
-    ├── RetryButton
-    └── MenuButton
+	├── GameOverLabel
+	├── StatsLabel
+	├── RetryButton
+	└── MenuButton
 ```
 
 ---
@@ -197,10 +197,10 @@ Control (game_over.gd)
 ```
 Control (victory.gd)
 └── VBoxContainer
-    ├── VictoryLabel
-    ├── StoryLabel (RichTextLabel)
-    ├── StatsLabel
-    └── MenuButton
+	├── VictoryLabel
+	├── StoryLabel (RichTextLabel)
+	├── StatsLabel
+	└── MenuButton
 ```
 
 ---
@@ -295,12 +295,12 @@ Control (victory.gd)
 เพิ่มในสคริปต์ player.gd:
 ```gdscript
 func _unhandled_input(event):
-    if event.is_action_pressed("ui_accept") and OS.is_debug_build():
-        # Debug commands
-        if Input.is_key_pressed(KEY_1):
-            game_manager.collect_herb("mint")
-        if Input.is_key_pressed(KEY_2):
-            game_manager.mental_health = 100
+	if event.is_action_pressed("ui_accept") and OS.is_debug_build():
+		# Debug commands
+		if Input.is_key_pressed(KEY_1):
+			game_manager.collect_herb("mint")
+		if Input.is_key_pressed(KEY_2):
+			game_manager.mental_health = 100
 ```
 
 ใช้เพื่อทดสอบเกมได้เร็วขึ้น

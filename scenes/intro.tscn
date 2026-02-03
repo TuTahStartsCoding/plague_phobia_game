@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bl2lwo2s0g2ry"]
+
+[ext_resource type="Script" uid="uid://ktylci2vugdo" path="res://scripts/intro.gd" id="1_ioskq"]
+
+[node name="intro" type="Control" unique_id=1930359145]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ioskq")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2032077933]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=484708616]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer" unique_id=1961201236]
+layout_mode = 2
+bbcode_enabled = true
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=455648996]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1118619877]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

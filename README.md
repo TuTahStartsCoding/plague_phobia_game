@@ -116,9 +116,9 @@ plague_phobia_game/
 │   ├── game_ui.gd              # UI หลัก
 │   └── patient_spawner.gd      # spawn ผู้ป่วย
 └── assets/
-    ├── sprites/
-    ├── sounds/
-    └── fonts/
+	├── sprites/
+	├── sounds/
+	└── fonts/
 ```
 
 ## 🎨 การสร้าง Sprites
