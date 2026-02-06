@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://biy8656bibqis"]
+
+[node name="main_game" type="Node2D" unique_id=391715275]
+
+[node name="TileMap" type="TileMap" parent="." unique_id=1339265491]
+format = 2
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=534534087]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=1695587502]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1287300532]
+
+[node name="InteractionArea" type="Area2D" parent="Player" unique_id=556612140]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/InteractionArea" unique_id=1973760820]
+
+[node name="Forest" type="Node2D" parent="." unique_id=1268486348]
+
+[node name="Herb_Mint" type="Node2D" parent="Forest" unique_id=1590188154]
+
+[node name="Sprite2D" type="Sprite2D" parent="Forest/Herb_Mint" unique_id=231785895]
+
+[node name="Area2D" type="Area2D" parent="Forest/Herb_Mint" unique_id=1717639069]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Forest/Herb_Mint/Area2D" unique_id=16573638]
+
+[node name="InteractionPrompt" type="Label" parent="Forest/Herb_Mint" unique_id=197459348]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Herb_Ginger" type="Node2D" parent="Forest" unique_id=1393763348]
+
+[node name="Village" type="Node2D" parent="." unique_id=1674072831]
+
+[node name="PatientSpawner" type="Node2D" parent="Village" unique_id=1735623442]
+
+[node name="SpawnPoint1" type="Marker2D" parent="Village" unique_id=514295945]
+
+[node name="SpawnPoint2" type="Marker2D" parent="Village" unique_id=1781148828]
+
+[node name="House" type="Sprite2D" parent="Village" unique_id=1920199462]
+
+[node name="Temple" type="Node2D" parent="." unique_id=1793397593]
+
+[node name="Sprite2D" type="Sprite2D" parent="Temple" unique_id=1978217109]
+
+[node name="Area2D" type="Area2D" parent="Temple" unique_id=334233751]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Temple/Area2D" unique_id=1945959106]
+
+[node name="InteractionPrompt" type="Label" parent="Temple" unique_id=1120332033]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="PrayerUI" type="Control" parent="Temple" unique_id=712481869]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ProgressBar" type="ProgressBar" parent="Temple/PrayerUI" unique_id=808907645]
+layout_mode = 0
+offset_right = 4.0
+offset_bottom = 27.0
+
+[node name="InstructionLabel" type="Label" parent="Temple/PrayerUI" unique_id=2004630830]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Spirits" type="Node2D" parent="." unique_id=34574534]
+
+[node name="Spirit" type="CharacterBody2D" parent="Spirits" unique_id=2082908622]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Spirits/Spirit" unique_id=781560567]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spirits/Spirit" unique_id=29112589]
+
+[node name="DetectionArea" type="Area2D" parent="Spirits/Spirit" unique_id=1666646605]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spirits/Spirit/DetectionArea" unique_id=1475025064]
+
+[node name="HazardAreas" type="Node2D" parent="." unique_id=4514378]
+
+[node name="DirtyWater" type="Area2D" parent="HazardAreas" unique_id=222552204]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardAreas/DirtyWater" unique_id=751886728]
+
+[node name="Sprite2D" type="Sprite2D" parent="HazardAreas/DirtyWater" unique_id=923271352]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2086584363]
+
+[node name="GameUI" type="CanvasLayer" parent="." unique_id=952448573]
+
+[node name="MarginContainer" type="MarginContainer" parent="GameUI" unique_id=2035177854]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUI/MarginContainer" unique_id=112593176]
+layout_mode = 2
+
+[node name="TopBar" type="HBoxContainer" parent="GameUI/MarginContainer/VBoxContainer" unique_id=1315117430]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameUI/MarginContainer/VBoxContainer/TopBar" unique_id=1910150250]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="GameUI/MarginContainer/VBoxContainer/TopBar" unique_id=1808713784]
+layout_mode = 2
+
+[node name="MentalHealthBar" type="ProgressBar" parent="GameUI/MarginContainer/VBoxContainer/TopBar" unique_id=1983365724]
+layout_mode = 2
+
+[node name="HallucinationBar" type="ProgressBar" parent="GameUI/MarginContainer/VBoxContainer/TopBar" unique_id=262432454]
+layout_mode = 2
+
+[node name="DiseaseWarning" type="Label" parent="GameUI/MarginContainer/VBoxContainer" unique_id=44081238]
+layout_mode = 2
+
+[node name="BottomBar" type="HBoxContainer" parent="GameUI/MarginContainer/VBoxContainer" unique_id=1653364526]
+layout_mode = 2
+
+[node name="HerbsLabel" type="Label" parent="GameUI/MarginContainer/VBoxContainer/BottomBar" unique_id=311373572]
+layout_mode = 2
+
+[node name="ScreenOverlay" type="ColorRect" parent="." unique_id=1892157878]
+offset_right = 40.0
+offset_bottom = 40.0
